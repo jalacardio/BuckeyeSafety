@@ -16,7 +16,8 @@
         android:background="@null"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="60dp" />
+        android:layout_marginBottom="60dp"
+        android:onClick="emergencyOnClick"/>
 
     <TextView
         android:layout_width="wrap_content"

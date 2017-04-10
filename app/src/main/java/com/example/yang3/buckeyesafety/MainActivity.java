@@ -1,6 +1,12 @@
 package com.example.yang3.buckeyesafety;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -16,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
-
+    public static Context context;
+    public static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,9 +60,34 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setCurrentItem(1, false);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+        context = this;
+        // Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
 
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.CALL_PHONE},
+                        MY_PERMISSIONS_REQUEST_CALL_PHONE);
+        }
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_settings:
+                Intent myIntent = new Intent(this, SettingsActivity.class);
+                //myIntent.putExtra("key", value); //Optional parameters
+                startActivity(myIntent);
+                return true;
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
 
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -62,7 +95,12 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-
+    public void emergencyOnClick(View view){
+//        Toast toast = Toast.makeText(this, "I'm clicked", Toast.LENGTH_LONG);
+//        toast.show();
+        AlertManager am = new AlertManager(this);
+        am.alert();
+    }
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -84,9 +122,6 @@ public class MainActivity extends AppCompatActivity {
                 case 1:
                     HomeTab homeTab = new HomeTab();
                     return homeTab;
-                case 2:
-                    SettingsTab settingsTab = new SettingsTab();
-                    return settingsTab;
                 default:
                     return null;
             }
@@ -95,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 2;
         }
 
         @Override
@@ -105,8 +140,6 @@ public class MainActivity extends AppCompatActivity {
                     return "EMERGENCY";
                 case 1:
                     return "HOME";
-                case 2:
-                    return "SETTINGS";
             }
             return null;
         }
