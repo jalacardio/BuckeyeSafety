@@ -79,7 +79,7 @@ public class SetupActivity extends AppCompatActivity {
                 "\t\t</div>\n" +
                 "\t\t<img src=\"http://content.sportslogos.net/logos/33/791/full/4914_ohio_state_buckeyes-mascot-2003.png\" id=\"brutus\" />\n" +
                 "\t</body>\n" +
-                "</html>";
+                "</html> ";
         view.loadData(html, "text/html", null);
 
     }
