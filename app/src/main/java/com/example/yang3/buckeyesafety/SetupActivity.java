@@ -9,8 +9,6 @@ import android.webkit.WebViewClient;
 
 import static android.R.attr.value;
 
-;
-
 public class SetupActivity extends AppCompatActivity {
 
     @Override

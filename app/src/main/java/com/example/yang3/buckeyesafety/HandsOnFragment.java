@@ -53,8 +53,8 @@ public class HandsOnFragment extends Fragment {
         @Override
         public void run() {
             Log.d("HandsOn", "Emergency Started");
-            Toast.makeText(mContext, "Contacts Notified", Toast.LENGTH_SHORT).show();
-            dialog.dismiss();
+            AlertManager am = new AlertManager(mActivity);
+            am.alert();
         }
     };
     private AlertDialog dialog;
