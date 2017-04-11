@@ -95,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
-    public void emergencyOnClick(View view){
-//        Toast toast = Toast.makeText(this, "I'm clicked", Toast.LENGTH_LONG);
-//        toast.show();
-        AlertManager am = new AlertManager(this);
-        am.alert();
+
+    public void onHandsOnButtonClicked(View view) {
+        Intent intent = new Intent(MainActivity.this, HandsOnActivity.class);
+        startActivity(intent);
     }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
