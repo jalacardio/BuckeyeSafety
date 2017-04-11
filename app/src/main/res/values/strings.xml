@@ -3,9 +3,15 @@
     <string name="action_settings">Settings</string>
     <string name="action_emergency">Emergency</string>
     <string name="action_home">Home</string>
+<<<<<<< HEAD
     <string name="map_description">Follow a route</string>
     <string name="hand_description">Hold button</string>
     <string name="home_description">Safety is our #1 concern</string>
+=======
+    <string name="map_description">Some description\n for map mode</string>
+    <string name="hand_description">Some description for hand on mode</string>
+    <string name="home_description">Hi</string>
+>>>>>>> d814f1c60b611fb2ebda73ada1fec4b28aabfa17
     <string name="emerg_description">I need help!</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_settings">SettingsActivity</string>
