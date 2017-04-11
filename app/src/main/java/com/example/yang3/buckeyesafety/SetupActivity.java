@@ -39,23 +39,45 @@ public class SetupActivity extends AppCompatActivity {
 
         String html = "<html>\n" +
                 "\t<head>\n" +
+                "\t\t<style type=\"text/css\">\n" +
+                "\t\t\t#close {\n" +
+                "\t\t\t\tdisplay: block;\n" +
+                "\t\t\t\tsize: 25px;\n" +
+                "\t\t\t\tline-height: 50px;\n" +
+                "\t\t\t\twidth: 350px;\n" +
+                "\t\t\t\tbackground-color: red;\n" +
+                "\t\t\t\tmargin: auto auto;\n" +
+                "\t\t\t\ttext-align: center;\n" +
+                "\t\t\t\tcolor: #fff;\n" +
+                "\t\t\t\ttext-decoration: none;\n" +
+                "\t\t\t\tfont-weight: bold;\n" +
+                "\n" +
+                "\t\t\t}\n" +
+                "\t\t\t#brutus {\n" +
+                "\t\t\t\tposition: relative;\n" +
+                "\t\t\t\tdisplay: block;\n" +
+                "\t\t\t\tright: -35px;\n" +
+                "\t\t\t}\n" +
+                "\t\t</style>\n" +
                 "\t</head>\n" +
                 "\t<body>\n" +
                 "\t\t<h1>\n" +
                 "\t\t\tWelcome to BuckeyeSaftey!\n" +
                 "\t\t</h1>\n" +
-                "\t\t<h3>\n" +
-                "\t\t\tThis app will be your buddy whenever you need to walk alone! There's two different ways to stay protected: <br />\n" +
-                "1. Hold a button on the main screen and if you let go before you find your destination, emergency contacts will be notified. <br />\n" +
-                "2.  Swipe left at any time and emergency contacts will be notified. <br />\n" +
-                "\t\t</h3>\n" +
-                "\t\t<div>\n" +
-                "\t\t\t<form id=\"settings\" action=\"#\">\n" +
-                "\t\t\t\t<input id=\"phone\"></input>\n" +
-                "\t\t\t\t<input id=\"email\"></input>\n" +
-                "<a href=\"http://exitme\" />close</a>" +
-                "\t\t\t</form>\n" +
+                "\t\t<div id=\"paraWrapper\">\n" +
+                "\t\t\t<h3>\n" +
+                "\t\t\t\tThis app will be your buddy whenever you need to walk alone! There's three different ways to stay protected: <br />\n" +
+                "\t\t\t\t<ol>\n" +
+                "\t\t\t\t\t<li>Hold a button on the main screen and if you let go before you find your destination, emergency contacts will be notified.</li>\n" +
+                "\t\t\t\t\t<li>Enter estination address and get an ETA. App will prompt you after ETA minutes to see if you're home. </li>\n" +
+                "\t\t\t\t\t<li>Swipe left at any time and emergency contacts will be notified. </li>\n" +
+                "\t\t\t\t</ol>\n" +
+                "\t\t\t</h3>\n" +
                 "\t\t</div>\n" +
+                "\t\t<div>\n" +
+                "\t\t\t<a id=\"close\" href=\"http://exitme\" />Got it!</a>\n" +
+                "\t\t</div>\n" +
+                "\t\t<img src=\"http://content.sportslogos.net/logos/33/791/full/4914_ohio_state_buckeyes-mascot-2003.png\" id=\"brutus\" />\n" +
                 "\t</body>\n" +
                 "</html>";
         view.loadData(html, "text/html", null);
