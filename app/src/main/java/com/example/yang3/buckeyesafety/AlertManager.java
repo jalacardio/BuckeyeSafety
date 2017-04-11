@@ -36,13 +36,24 @@ public class AlertManager {
 
     }
     public void sendEmail(){
-        Toast toast = Toast.makeText(c, email, Toast.LENGTH_LONG);
-        toast.show();
+        String[] emails = {email};
+        String subject = "Emergency!!!";
+        String message = "Your friend is currently in danger! Try to reach out to him!";
+
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, emails);
+        email.putExtra(Intent.EXTRA_SUBJECT, subject);
+        email.putExtra(Intent.EXTRA_TEXT, message);
+
+        // need this to prompts email client only
+        email.setType("message/rfc822");
+
+        c.startActivity(Intent.createChooser(email, "Choose an Email client :"));
     }
     public void alert(){
         getNumber();
         getEmail();
         callToNumber();
-        //sendEmail();
+        sendEmail();
     }
 }
