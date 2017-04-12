@@ -22,7 +22,7 @@
         android:src="@drawable/map" />
 
     <ImageButton
-        android:layout_width="144dp"
+        android:layout_width="158dp"
         android:layout_height="158dp"
         android:id="@+id/handButton"
         android:src="@drawable/hand"
