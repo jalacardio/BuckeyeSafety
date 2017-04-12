@@ -1,34 +1,30 @@
 package com.example.yang3.buckeyesafety;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
+import android.content.Context;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-public class HandsOnActivity extends AppCompatActivity {
+//import com.google.android.gms.location.LocationListener;
+//import com.google.android.gms.location.LocationServices;
+
+public class MapActivity extends FragmentActivity
+{
+
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -41,7 +37,10 @@ public class HandsOnActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     private EmergencyTab emergencyTab;
-    private HandsOnFragment frag;
+    private MapsFragment frag;
+
+    public void ButtonOnClick(View view) {
+    }
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
@@ -59,7 +58,6 @@ public class HandsOnActivity extends AppCompatActivity {
             // Return a PlaceholderFragment (defined as a static inner class below).
             switch (position) {
                 case 0:
-                    frag.removeCallbacks();
                     return emergencyTab;
                 case 1:
                     return frag;
@@ -89,7 +87,6 @@ public class HandsOnActivity extends AppCompatActivity {
         public void setPrimaryItem(ViewGroup container, int position, Object object) {
             super.setPrimaryItem(container, position, object);
             if (position == 0) {
-                frag.removeCallbacks();
             }
         }
     }
@@ -100,10 +97,10 @@ public class HandsOnActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         emergencyTab = new EmergencyTab();
-        frag = new HandsOnFragment();
+        frag = new MapsFragment();
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
@@ -127,6 +124,7 @@ public class HandsOnActivity extends AppCompatActivity {
                     new String[]{Manifest.permission.CALL_PHONE},
                     MainActivity.MY_PERMISSIONS_REQUEST_CALL_PHONE);
         }
+
     }
 
     public void emergencyOnClick(View view){
@@ -135,4 +133,5 @@ public class HandsOnActivity extends AppCompatActivity {
         AlertManager am = new AlertManager(this);
         am.alert();
     }
+
 }

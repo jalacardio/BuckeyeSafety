@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.yang3.buckeyesafety">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
@@ -29,9 +31,19 @@
                 android:value="com.example.yang3.buckeyesafety.MainActivity" />
         </activity>
         <activity
+            android:name=".MapActivity"
+            android:label="MapActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".HandsOnActivity"
             android:label="@string/title_activity_hands_on"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC17KMHD6_oVxBuQ8fiy-wML8fdjCHKOOI "/>
+
+
     </application>
 
 </manifest>
